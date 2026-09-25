@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Url from "../Utils/Urls";
 
 const useProductSearch = (query) => {
   const [products, setProducts] = useState([]);
@@ -18,7 +19,7 @@ const useProductSearch = (query) => {
         setIsLoading(true);
         setError(null);
         const response = await axios.get(
-          "https://dummyjson.com/products/search",
+          Url.getProductSearch,
           { params: { q: query, limit: 10 }, signal: controller.signal }
         );
         setProducts(response.data?.products || []);

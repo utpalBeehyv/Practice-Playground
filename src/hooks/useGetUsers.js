@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import Url from "../Utils/Urls";
 
 const useGetUsers = () => {
   const [users, setUsers] = useState([]);
@@ -11,7 +12,7 @@ const useGetUsers = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get("https://dummyjson.com/users", {
+        const response = await axios.get(Url.getUser, {
           params: { limit, skip },
           signal,
         });

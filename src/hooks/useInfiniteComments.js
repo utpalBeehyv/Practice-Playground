@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useCallback, useRef, useState } from "react";
+import Url from "../Utils/Urls";
 
 const LIMIT = 20;
-const BASE_URL = "https://dummyjson.com/comments";
 
 const useInfiniteComments = () => {
   const [comments, setComments] = useState([]);
@@ -20,7 +20,7 @@ const useInfiniteComments = () => {
       setError(null);
 
       try {
-        const response = await axios.get(BASE_URL, {
+        const response = await axios.get(Url.getComments, {
           params: { limit: LIMIT, skip: skipRef.current },
           signal,
         });
